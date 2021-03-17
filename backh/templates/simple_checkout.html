@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checkout</title>
+	<meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+    <link rel="stylesheet" href="{% static 'css/pay.css' %}">
+     <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+
+
+</head>
+<body>
+<div>
+
+</div>
+
+<div class="container">
+
+	<div class="forms">
+        <label for="">donation amount:$</label>
+        <input type="text" id="myInput">
+  
+        <div id="lipa">
+			<p>Choose donation method.</p>
+
+
+ <div id="paypal-button-container"></div>
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AYEFwXpH7QawYfjNpBVrlq3GEwaoGVa5Cv3ahUvUwu0QMrRI4Vynmj9UgjK6d4Nbe0CRzhg8cZPTdNFT&currency=USD"></script>
+
+
+            <script>
+
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+             style: {
+                color:  'blue',
+                shape:  'pill',
+                label:  'pay',
+                height: 40,
+
+            },
+
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                const str = $("#myInput").val();
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: str
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+
+
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Bootsrap javascript file -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- owl carouseljavascript file -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <!-- Template main javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/pay.js' %}"></script>
+
+
+
+</html>

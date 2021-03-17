@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <!-- Carousel
+    ================================================== -->
+    <div id="homeCarousel" class="carousel slide carousel-home" data-ride="carousel">
+
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#homeCarousel" data-slide-to="1"></li>
+            <li data-target="#homeCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <div class="carousel-inner" role="listbox">
+
+            <div class="item active">
+
+              <img src="{% static 'images/slider/logo-slider.jpg' %}" alt="">
+
+              <div class="container">
+
+                <div class="carousel-caption">
+
+
+                    </div> <!-- /.carousel-caption -->
+
+              </div>
+
+            </div> <!-- /.item -->
+
+
+            <div class="item ">
+
+              <img src="{% static 'images/slider/home-slider-2.jpg' %}" alt="">
+
+              <div class="container">
+
+                <div class="carousel-caption">
+
+                  <h2 class="carousel-title bounceInDown animated slow">Together we can improve their lives</h2>
+                  <h4 class="carousel-subtitle bounceInUp animated slow"> So let's do it !</h4>
+                  <a href="{% url 'simple-checkout' %}" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated">DONATE NOW</a>
+
+                </div> <!-- /.carousel-caption -->
+
+              </div>
+
+            </div> <!-- /.item -->
+
+
+
+
+            <div class="item ">
+
+              <img src="{% static 'images/slider/home-slider-3.jpg' %}" alt="">
+
+              <div class="container">
+
+                <div class="carousel-caption">
+
+                  <h2 class="carousel-title bounceInDown animated slow" >A penny is a lot of money, if you have not got a penny.</h2>
+                  <h4 class="carousel-subtitle bounceInUp animated slow">You can make the diffrence !</h4>
+                  <a href="{% url 'simple-checkout' %}" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated slow" >DONATE NOW</a>
+
+                </div> <!-- /.carousel-caption -->
+
+              </div>
+
+            </div> <!-- /.item -->
+
+          </div>
+
+          <a class="left carousel-control" href="#homeCarousel" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+
+          <a class="right carousel-control" href="#homeCarousel" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+
+    </div><!-- /.carousel -->
+
+    <div class="section-home about-us fadeIn animated">
+  <h2 class="title-style-1">Our Causes <span class="title-under"></span></h2>
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-6 " >
+
+                  <div class="about-us-col">
+
+                        <div class="col-icon-wrapper">
+                          <img src="{% static 'images/icons/health.png' %}" alt="">
+                        </div>
+                        <h3 class="col-title">Health</h3>
+                        <div class="col-details">
+
+                          <p>We provide menstrual health education, teaching girls about girl's hygiene, we provide sanitary pads to the rural girls who. ...</p>
+
+                        </div>
+                        <a href="{% url 'about' %}" class="btn btn-primary"> Read more </a>
+
+                  </div>
+
+                </div>
+
+
+                <div class="col-md-4 col-sm-6">
+
+                  <div class="about-us-col">
+
+                        <div class="col-icon-wrapper">
+                          <img src="{% static 'images/icons/edu.png' %}" alt="">
+                        </div>
+                        <h3 class="col-title">Education</h3>
+                        <div class="col-details">
+
+                          <p>We help children from poor families with school stationaries so they can be able to go to school like other
+                              children who....
+                             </p>
+
+                        </div>
+                        <a href="{% url 'about' %}" class="btn btn-primary"> Read more </a>
+
+                  </div>
+
+                </div>
+
+
+                <div class="col-md-4 col-sm-6">
+
+                  <div class="about-us-col">
+
+                        <div class="col-icon-wrapper">
+                          <img src="{% static 'images/icons/env.png' %}" alt="">
+                        </div>
+                        <h3 class="col-title">Environment</h3>
+                        <div class="col-details">
+
+                          <p>We support environmental conservation, like environmental cleanness and planting trees especially on domestic land with ....</p>
+
+                        </div>
+                        <a href="{% url 'about' %}" class="btn btn-primary"> Read more </a>
+
+                  </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div> <!-- /.about-us -->
+
+
+
+    <div class="section-home our-causes animate-onscroll fadeIn">
+
+        <div class="container">
+
+            <h2 class="title-style-1">Latest Story <span class="title-under"></span></h2>
+
+            <div class="row">
+
+    {% for post in hme %}
+                <div class="col-md-3 col-sm-6">
+
+                    <div class="cause">
+
+                        <img src="{{post.image.url}}" alt="" class="cause-img"><!--  -->
+
+                        <h4 class="cause-title"><a href="causes-single.html">{{ post.title}} </a></h4>
+                        <div class="cause-details">
+                            {{ post.content }}</div>
+
+
+
+
+                    </div> <!-- /.cause -->
+
+                </div>
+
+              {% endfor %}
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div> <!-- /.our-causes -->
+ {% endblock %}

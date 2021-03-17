@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+          <div class="page-heading text-center">
+
+		<div class="container zoomIn animated">
+
+			<h1 class="page-title">GALLERY <span class="title-under"></span></h1>
+
+
+		</div>
+
+	</div>
+
+	<div class="main-container">
+
+		<div class="container gallery fadeIn animated">
+
+			<div class="row">
+{% for pic in pics %}
+
+					<a href="{% static 'images/gallery/7610291856_931fb9f461_k.jpg' %} " target="_blank" class="col-md-3 col-sm-4 gallery-item lightbox">
+
+						<img src="{{pic.photo.url}}" alt="">
+
+						<span class="on-hover">
+							<span class="hover-caption"></span>
+						</span>
+
+					</a> <!-- /.gallery-item -->
+{% endfor %}
+
+			</div>
+
+		</div>
+
+
+	</div> <!-- /.main-container  -->
+
+
+
+{% endblock %}
